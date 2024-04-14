@@ -1,6 +1,6 @@
 # exer6
 
-Menu and Navigation
+State Management
 
 # Task
 Modify the handout code to implement a checkout function. The checkout screen displays the cart contents, the price for each item, then the total. A button will be available if there are contents in the cart that allows the user to pay for the items. Otherwise, a prompt should be printed that there are no items. Prompt must appear in the snackbar for a successful transaction.
