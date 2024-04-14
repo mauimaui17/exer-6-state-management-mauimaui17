@@ -14,7 +14,8 @@ class Checkout extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           getItems(context),
-
+          //moved the computation of the price to the getItems function 
+          //that way it only appears when there are objects in the cart. 
           TextButton(
             child: const Text("Go back to Your Cart Catalog"),
             onPressed: () {
@@ -35,7 +36,7 @@ class Checkout extends StatelessWidget {
   Widget getItems(BuildContext context) {
     List<Item> products = context.watch<ShoppingCart>().cart;
     String productname = "";
-    return products.isEmpty
+    return products.isEmpty //if the products list is empty, print the text Item Details and No Items to Checkout
         ? const Flexible (child: Center(
             child: Column(
               children: [Text('Item Details'), Text('No Items to Checkout'), ],
@@ -84,10 +85,9 @@ class Checkout extends StatelessWidget {
     return Consumer<ShoppingCart>(builder: (context, cart, child) {
       return Flexible( child: Center(
           child: Column(
-        children: [
+        children: [ //Compute Cost now also contains the button to pay and the divider to ensure the UI makes sense.
           Text("Total: ${cart.cartTotal}"),
           const Divider(height: 4, color: Colors.black),
-
           ElevatedButton(
               onPressed: () {
                 context.read<ShoppingCart>().removeAll();

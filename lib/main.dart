@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
       routes: {
         "/cart": (context) => const MyCart(),
         "/products": (context) => const MyCatalog(),
-        "/checkout": (context) => const Checkout(),
+        "/checkout": (context) => const Checkout(), //route for checkout.
 
       },
       home: const MyCatalog(),

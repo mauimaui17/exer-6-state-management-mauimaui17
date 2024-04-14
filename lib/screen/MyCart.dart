@@ -26,7 +26,7 @@ class MyCart extends StatelessWidget {
                           context.read<ShoppingCart>().removeAll();
                         },
                         child: const Text("Reset")),
-                    ElevatedButton(
+                    ElevatedButton( //added this button to go to checkout 
                           onPressed: () {
                             Navigator.pushNamed(context, "/checkout");
                           },
@@ -58,27 +58,7 @@ class MyCart extends StatelessWidget {
                   return ListTile(
                     leading: const Icon(Icons.food_bank),
                     title: Text(products[index].name),
-                    trailing: IconButton(
-                      icon: const Icon(Icons.delete),
-                      onPressed: () {
-                        productname = products[index].name;
-                        context.read<ShoppingCart>().removeItem(productname);
-
-                        if (products.isNotEmpty) {
-                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                            content: Text("$productname removed!"),
-                            duration:
-                                const Duration(seconds: 1, milliseconds: 100),
-                          ));
-                        } else {
-                          ScaffoldMessenger.of(context)
-                              .showSnackBar(const SnackBar(
-                            content: Text("Cart Empty!"),
-                            duration: Duration(seconds: 1, milliseconds: 100),
-                          ));
-                        }
-                      },
-                    ),
+                    trailing: Text(products[index].price.toString())
                   );
                 },
               )),
